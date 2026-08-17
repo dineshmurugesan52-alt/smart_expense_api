@@ -1,0 +1,13 @@
+const express=require("express");
+//const app=express();
+const protect=require("../middleware/authMiddleware");
+const authorize=require("../middleware/authorize");
+const router=express.Router();
+const expenseController=require("../controllers/expenseController");
+//console.log(expenseController);
+router.post("/", protect, expenseController.createExpense);
+router.put("/:id", protect, expenseController.createExpenseById);
+router.get("/", protect, expenseController.readExpense);
+router.get("/:id", protect, expenseController.readExpenseById);
+router.delete("/:id", protect, expenseController.deleteExpenseById);
+module.exports=router;
